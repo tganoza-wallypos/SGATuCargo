@@ -30,15 +30,14 @@ $opt = "<select class='form-control' name='category'>
 
 $opt .= "</select>";
 
-  $query = 'SELECT PRODUCT_ID,PRODUCT_CODE, NAME,QTY_STOCK, ON_HAND,COMPANY_NAME, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID WHERE PRODUCT_ID ='.$_GET['id'];
+  $query = 'SELECT PRODUCT_ID, NAME,PRODUCT_CODE,QTY_STOCK,COMPANY_NAME, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID WHERE PRODUCT_ID ='.$_GET['id'];
   $result = mysqli_query($db, $query) or die(mysqli_error($db));
     while($row = mysqli_fetch_array($result))
     {   
       $zz = $row['PRODUCT_ID'];
-      $zzz = $row['PRODUCT_CODE'];
       $A = $row['NAME'];
+      $zzz = $row['PRODUCT_CODE'];
       $B = $row['QTY_STOCK'];
-      $C = $row['ON_HAND'];
       $D = $row['COMPANY_NAME'];
       $E = $row['CNAME'];
     }
@@ -55,14 +54,7 @@ $opt .= "</select>";
 
             <form role="form" method="post" action="inv_edit1.php">
               <input type="hidden" name="idd" value="<?php echo $zz; ?>" />
-              <div class="form-group row text-left text-warning">
-                <div class="col-sm-3" style="padding-top: 5px;">
-                Código de producto:
-                </div>
-                <div class="col-sm-9">
-                  <input class="form-control" value="<?php echo $zzz; ?>" readonly>
-                </div>
-              </div>
+              
               <div class="form-group row text-left text-warning">
                 <div class="col-sm-3" style="padding-top: 5px;">
                 Nombre del producto:
@@ -73,20 +65,21 @@ $opt .= "</select>";
               </div>
               <div class="form-group row text-left text-warning">
                 <div class="col-sm-3" style="padding-top: 5px;">
+                Código de producto:
+                </div>
+                <div class="col-sm-9">
+                  <input class="form-control" value="<?php echo $zzz; ?>" readonly>
+                </div>
+              </div>
+              <div class="form-group row text-left text-warning">
+                <div class="col-sm-3" style="padding-top: 5px;">
                 Cantidad:
                 </div>
                 <div class="col-sm-9">
                   <input class="form-control" placeholder="Quantity" name="qty" value="<?php echo $B; ?>" required>
                 </div>
               </div>
-              <div class="form-group row text-left text-warning">
-                <div class="col-sm-3" style="padding-top: 5px;">
-                En mano:
-                </div>
-                <div class="col-sm-9">
-                  <input class="form-control" placeholder="On Hand" name="oh" value="<?php echo $C; ?>" required>
-                </div>
-              </div>
+              
               <div class="form-group row text-left text-warning">
                 <div class="col-sm-3" style="padding-top: 5px;">
                 Proveedor:
