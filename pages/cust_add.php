@@ -41,6 +41,9 @@ if ($Aa=='User'){
                             <div class="form-group">
                               <input class="form-control" placeholder="Phone Number" name="phonenumber" required>
                             </div>
+                            <div class="form-group">
+                              <input class="form-control" placeholder="Nro RUC" name="rucnumber" required>
+                            </div>
                             <hr>
 
                             <button type="submit" class="btn btn-success btn-block"><i class="fa fa-check fa-fw"></i>Guardar</button>

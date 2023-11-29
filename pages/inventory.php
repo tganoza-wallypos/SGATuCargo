@@ -20,7 +20,6 @@ include'../includes/sidebar.php';
   }           
 }
             ?>
-            
             <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h4 class="m-2 font-weight-bold text-primary">Lotes</h4>
@@ -30,10 +29,9 @@ include'../includes/sidebar.php';
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
                <thead>
                    <tr>
+                   <th>Nombre</th>
                      <th>Código de lote</th>
-                     <th>Nombre</th>
                      <th>Cantidad</th>
-                     <th>En mano</th>
                      <th>Category</th>
                      <th>Fecha de stock en</th>
                      <th>Acción</th>
@@ -42,16 +40,16 @@ include'../includes/sidebar.php';
           <tbody>
 
 <?php                  
-    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, COUNT(`QTY_STOCK`) AS "QTY_STOCK", COUNT(`ON_HAND`) AS "ON_HAND", CNAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
+    $query = 'SELECT PRODUCT_ID,  NAME,PRODUCT_CODE, COUNT(`QTY_STOCK`) AS "QTY_STOCK", CNAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {
                                  
                 echo '<tr>';
-                echo '<td>'. $row['PRODUCT_CODE'].'</td>';
                 echo '<td>'. $row['NAME'].'</td>';
+                echo '<td>'. $row['PRODUCT_CODE'].'</td>';
+                
                 echo '<td>'. $row['QTY_STOCK'].'</td>';
-                echo '<td>'. $row['ON_HAND'].'</td>';
                 echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['DATE_STOCK_IN'].'</td>';
                       echo '<td align="right">
