@@ -29,11 +29,12 @@ if ($Aa=='User'){
               $fname = $_POST['firstname'];
               $lname = $_POST['lastname'];
               $pn = $_POST['phonenumber'];
+              $ruc = $_POST['ruc'];
         
               switch($_GET['action']){
                 case 'add':     
                     $query = "INSERT INTO customer
-                    (CUST_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER)
+                    (CUST_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, RUC)
                     VALUES (Null,'{$fname}','{$lname}','{$pn}')";
                     mysqli_query($db,$query)or die ('Error in updating Database');
                 break;
